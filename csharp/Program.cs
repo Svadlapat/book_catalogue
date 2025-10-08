@@ -2,21 +2,14 @@
 using System;
 using System.IO;
 using System.Collections.Generic;
-using System.Linq; 
+using System.Linq;
+using BookCatalog.Forms;
+
+namespace BookCatalog;
 
 public class Program
 {
     private static string dbPath = GetDatabasePath();
-
-    private class Book
-    {
-        // Use the 'required' keyword for non-nullable properties that are set during object creation.
-        public required int Id { get; set; }
-        public required string Title { get; set; }
-        public required string Author { get; set; }
-        public required string Genre { get; set; }
-        public required int Year { get; set; }
-    }
 
     private static string GetDatabasePath()
     {
@@ -26,16 +19,23 @@ public class Program
         return Path.Combine(dataDir, "books.db");
     }
 
+    [STAThread]
     public static void Main(string[] args)
     {
         InitializeDatabase();
 
-        if (args.Length == 0)
+        if (args.Length > 0)
         {
-            Console.WriteLine("Please provide a command: add, list, search, or report.");
+            RunConsoleMode(args);
             return;
         }
 
+        ApplicationConfiguration.Initialize();
+        Application.Run(new MainForm());
+    }
+
+    private static void RunConsoleMode(string[] args)
+    {
         string command = args[0].ToLower();
 
         switch (command)
