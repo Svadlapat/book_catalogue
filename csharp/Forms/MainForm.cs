@@ -6,7 +6,7 @@ namespace BookCatalog.Forms;
 
 public partial class MainForm : Form
 {
-    private const string ConnectionString = "Data Source=data/books.db";
+    private string ConnectionString => $"Data Source={Program.GetDatabasePath()}";
     private readonly DataTable _booksTable = new();
 
     public MainForm()
@@ -14,6 +14,13 @@ public partial class MainForm : Form
         InitializeComponent();
         InitializeDataGrid();
         LoadBooks();
+        UpdateButtonStates();
+    }
+
+    private void MainForm_Load(object sender, EventArgs e)
+    {
+        // Additional initialization if needed
+        dgvBooks.Focus();
     }
 
     private void InitializeDataGrid()
@@ -22,8 +29,28 @@ public partial class MainForm : Form
         _booksTable.Columns.Add("Title", typeof(string));
         _booksTable.Columns.Add("Author", typeof(string));
         _booksTable.Columns.Add("Genre", typeof(string));
-        _booksTable.Columns.Add("PublicationYear", typeof(int));
+        _booksTable.Columns.Add("Year", typeof(int));
         dgvBooks.DataSource = _booksTable;
+
+        // Hide the ID column
+        dgvBooks.Columns["Id"].Visible = false;
+        
+        // Set column headers and widths
+        dgvBooks.Columns["Title"].HeaderText = "Book Title";
+        dgvBooks.Columns["Title"].Width = 200;
+        dgvBooks.Columns["Author"].HeaderText = "Author";
+        dgvBooks.Columns["Author"].Width = 150;
+        dgvBooks.Columns["Genre"].HeaderText = "Genre";
+        dgvBooks.Columns["Genre"].Width = 120;
+        dgvBooks.Columns["Year"].HeaderText = "Publication Year";
+        dgvBooks.Columns["Year"].Width = 120;
+
+        // Set alternating row colors
+        dgvBooks.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+        dgvBooks.RowsDefaultCellStyle.BackColor = Color.White;
+        dgvBooks.ColumnHeadersDefaultCellStyle.BackColor = Color.Navy;
+        dgvBooks.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+        dgvBooks.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
     }
 
     private void LoadBooks(string searchTerm = "")
@@ -58,6 +85,15 @@ public partial class MainForm : Form
                 reader.GetInt32(4)
             );
         }
+
+        UpdateButtonStates();
+    }
+
+    private void UpdateButtonStates()
+    {
+        bool hasSelectedRow = dgvBooks.CurrentRow != null;
+        btnEdit.Enabled = hasSelectedRow;
+        btnDelete.Enabled = hasSelectedRow;
     }
 
     private void btnSearch_Click(object sender, EventArgs e)
@@ -84,7 +120,7 @@ public partial class MainForm : Form
             Title = (string)dgvBooks.CurrentRow.Cells["Title"].Value,
             Author = (string)dgvBooks.CurrentRow.Cells["Author"].Value,
             Genre = (string)dgvBooks.CurrentRow.Cells["Genre"].Value,
-            PublicationYear = (int)dgvBooks.CurrentRow.Cells["PublicationYear"].Value
+            PublicationYear = (int)dgvBooks.CurrentRow.Cells["Year"].Value
         };
 
         var editForm = new AddEditBookForm(book);
@@ -119,5 +155,36 @@ public partial class MainForm : Form
     {
         var reportForm = new ReportForm();
         reportForm.Show();
+    }
+
+    private void btnClearSearch_Click(object sender, EventArgs e)
+    {
+        txtSearch.Clear();
+        LoadBooks();
+        txtSearch.Focus();
+    }
+
+    private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        if (e.KeyChar == (char)Keys.Enter)
+        {
+            btnSearch_Click(sender, e);
+            e.Handled = true;
+        }
+    }
+
+    private void dgvBooks_SelectionChanged(object sender, EventArgs e)
+    {
+        UpdateButtonStates();
+    }
+
+    private void dgvBooks_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+    {
+        // Format publication year to be more readable
+        if (dgvBooks.Columns[e.ColumnIndex].Name == "Year" && e.Value != null)
+        {
+            e.Value = e.Value.ToString();
+            e.FormattingApplied = true;
+        }
     }
 }
