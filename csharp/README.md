@@ -2,30 +2,30 @@
 
 A comprehensive GUI-based book cataloging application built with **C# .NET 8** and **Windows Forms**, featuring SQLite database integration for efficient book management.
 
-## 🎯 Project Overview
+## Project Overview
 
 This application is part of a cross-language development project that demonstrates how different programming languages handle similar functionalities. The C# implementation showcases object-oriented programming, Windows Forms GUI development, and database integration patterns specific to the .NET ecosystem.
 
-## ✨ Features
+## Features
 
 ### Core Functionality
-- ✅ **Add Books**: Create new book entries with validation
-- ✅ **Edit Books**: Modify existing book information
-- ✅ **Delete Books**: Remove books with confirmation dialogs
-- ✅ **Search Books**: Find books by title, author, or genre
-- ✅ **View All Books**: Browse complete catalog in a data grid
-- ✅ **Generate Reports**: Comprehensive statistics and analytics
+-  **Add Books**: Create new book entries with validation
+-  **Edit Books**: Modify existing book information
+-  **Delete Books**: Remove books with confirmation dialogs
+-  **Search Books**: Find books by title, author, or genre
+-  **View All Books**: Browse complete catalog in a data grid
+-  **Generate Reports**: Comprehensive statistics and analytics
 
 ### Advanced Features
-- 🎨 **Modern GUI**: Professional Windows Forms interface with icons and colors
-- 🔍 **Real-time Search**: Instant filtering with Enter key support
-- 📊 **Rich Reports**: Statistics by genre, author, publication decade
-- 💾 **Export Reports**: Save reports to text files
-- ✅ **Input Validation**: Real-time field validation with visual feedback
-- 🗃️ **Sample Data**: 25 pre-loaded books for testing
-- 🔄 **Dual Mode**: Both GUI and console interfaces
+- **Modern GUI**: Professional Windows Forms interface with icons and colors
+- **Real-time Search**: Instant filtering with Enter key support
+- **Rich Reports**: Statistics by genre, author, publication decade
+- **Export Reports**: Save reports to text files
+- **Input Validation**: Real-time field validation with visual feedback
+- **Sample Data**: 25 pre-loaded books for testing
+- **Dual Mode**: Both GUI and console interfaces
 
-## 🛠️ Technology Stack
+##  Technology Stack
 
 - **Language**: C# 12 (.NET 8)
 - **GUI Framework**: Windows Forms
@@ -33,7 +33,7 @@ This application is part of a cross-language development project that demonstrat
 - **Architecture**: Object-Oriented Programming (OOP)
 - **Design Patterns**: Model-View-Controller (MVC), Repository Pattern
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 - **.NET 8 SDK** or later
@@ -79,7 +79,7 @@ dotnet run -- search "fantasy"
 dotnet run -- report
 ```
 
-## 📖 Usage Guide
+##  Usage Guide
 
 ### Main Interface
 ![Book Catalog Main Window](docs/main-window.png)
@@ -98,13 +98,13 @@ dotnet run -- report
 
 ### Reports & Analytics
 The report feature provides:
-- 📊 Total book count
-- 📚 Books by genre with percentages
-- 👨‍💼 Top 15 authors by book count
-- 📅 Books by publication decade
-- 🆕 Recently added books
+-  Total book count
+-  Books by genre with percentages
+-  Top 15 authors by book count
+-  Books by publication decade
+-  Recently added books
 
-## 🏗️ Project Structure
+##  Project Structure
 
 ```
 csharp/
@@ -122,7 +122,7 @@ csharp/
     └── books.db                # SQLite database (auto-created)
 ```
 
-## 🎯 C# Language-Specific Features Demonstrated
+##  C# Language-Specific Features Demonstrated
 
 ### Object-Oriented Programming
 ```csharp
@@ -173,7 +173,7 @@ var report = new StringBuilder();
 report.AppendLine($"Total Books: {totalCount}");
 ```
 
-## 🗄️ Database Schema
+##  Database Schema
 
 ```sql
 CREATE TABLE books (
@@ -185,7 +185,7 @@ CREATE TABLE books (
 );
 ```
 
-## 🧪 Sample Data
+##  Sample Data
 
 The application includes 25 pre-loaded books covering various genres:
 - Classic Literature (The Great Gatsby, Pride and Prejudice)
@@ -194,23 +194,23 @@ The application includes 25 pre-loaded books covering various genres:
 - Mystery (Sherlock Holmes, Agatha Christie)
 - And more...
 
-## 📋 Requirements Compliance
+##  Requirements Compliance
 
-### Project Requirements ✅
-- **Storage for book details**: ✅ Title, Author, Genre, Publication Year
-- **Search functionality**: ✅ Multi-field search capability
-- **Simple reporting**: ✅ Statistics by genre and author
-- **GUI-based application**: ✅ Windows Forms interface
+### Project Requirements 
+- **Storage for book details**:  Title, Author, Genre, Publication Year
+- **Search functionality**:  Multi-field search capability
+- **Simple reporting**:  Statistics by genre and author
+- **GUI-based application**:  Windows Forms interface
 
-### C# Language Features ✅
-- **Classes and Properties**: ✅ Book model with auto-properties
-- **LINQ for Querying**: ✅ Data filtering and grouping
-- **Collections Handling**: ✅ List<T>, DataTable usage
-- **Exception Handling**: ✅ Try-catch with user feedback
-- **Memory Management**: ✅ Automatic garbage collection
-- **Event-Driven Programming**: ✅ Windows Forms events
+### C# Language Features 
+- **Classes and Properties**:  Book model with auto-properties
+- **LINQ for Querying**:  Data filtering and grouping
+- **Collections Handling**:  List<T>, DataTable usage
+- **Exception Handling**:  Try-catch with user feedback
+- **Memory Management**:  Automatic garbage collection
+- **Event-Driven Programming**:  Windows Forms events
 
-## 🚀 Build & Deployment
+##  Build & Deployment
 
 ### Development Build
 ```bash
@@ -227,7 +227,7 @@ dotnet build --configuration Release
 dotnet publish --configuration Release --runtime win-x64 --self-contained true
 ```
 
-## 🧪 Testing
+##  Testing
 
 ### Manual Testing
 1. Launch the application
@@ -245,7 +245,7 @@ dotnet run -- search "tolkien"
 dotnet run -- report
 ```
 
-## 🔧 Configuration
+##  Configuration
 
 ### Database Path
 The SQLite database is automatically created in:
@@ -258,7 +258,7 @@ The SQLite database is automatically created in:
 - Update `Book.cs` model for additional fields
 - Customize UI in `.Designer.cs` files
 
-## 📚 Cross-Language Comparison
+##  Cross-Language Comparison
 
 This C# implementation provides excellent contrast points for comparison with other language implementations:
 
@@ -277,23 +277,3 @@ This C# implementation provides excellent contrast points for comparison with ot
 - **Memory**: Managed vs manual memory management
 - **Platform**: Windows-focused vs cross-platform
 
-## 📄 License
-
-This project is part of an educational assignment for cross-language application development comparison.
-
-## 👥 Contributors
-
-- **Your Name** - C# Implementation
-- **Partner Name** - Ruby Implementation
-
-## 📞 Support
-
-For issues or questions:
-1. Check the project documentation
-2. Review error messages in the console output
-3. Verify .NET 8 SDK installation
-4. Ensure Windows Forms workload is installed
-
----
-
-**Note**: This application demonstrates C# programming concepts and Windows Forms development as part of a cross-language comparison project.
