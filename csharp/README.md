@@ -1,4 +1,4 @@
-# 📚 Book Catalog Management System (C#)
+# Book Catalog Management System (C#)
 
 A comprehensive GUI-based book cataloging application built with **C# .NET 8** and **Windows Forms**, featuring SQLite database integration for efficient book management.
 
