@@ -82,7 +82,6 @@ dotnet run -- report
 ##  Usage Guide
 
 ### Main Interface
-![Book Catalog Main Window](docs/main-window.png)
 
 - **Search Box**: Type to filter books by title, author, or genre
 - **Add Button**: Opens form to add new books
